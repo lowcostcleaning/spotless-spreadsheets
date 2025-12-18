@@ -28,7 +28,7 @@ export function ResultsTable({ title, records, onBack }: ResultsTableProps) {
       {records.length > 0 && (
         <div className="bg-accent/50 rounded-xl p-4 mb-4 flex items-center gap-2">
           <Banknote className="h-5 w-5 text-primary" />
-          <span className="font-semibold text-lg">Итого: {total.toLocaleString("ru-RU")} ₽</span>
+          <span className="font-semibold text-lg">Итого: {total.toLocaleString("ru-RU")} ₾</span>
         </div>
       )}
 
@@ -75,7 +75,7 @@ export function ResultsTable({ title, records, onBack }: ResultsTableProps) {
                   <TableCell className="font-medium">{record.date}</TableCell>
                   <TableCell>{record.apartment}</TableCell>
                   <TableCell>{record.cleaner}</TableCell>
-                  <TableCell>{record.salary.toLocaleString("ru-RU")} ₽</TableCell>
+                  <TableCell>{record.salary.toLocaleString("ru-RU")} ₾</TableCell>
                 </TableRow>
               ))
             )}
