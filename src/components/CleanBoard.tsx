@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCleaningData, toISO, formatDate } from "@/lib/csvParser";
 import { CleaningRecord, DayData } from "@/types/cleaning";
@@ -7,7 +7,7 @@ import { CalendarFilters } from "./CalendarFilters";
 import { CalendarGrid } from "./CalendarGrid";
 import { ResultsTable } from "./ResultsTable";
 import { LoadingSpinner } from "./LoadingSpinner";
-import { Sparkles } from "lucide-react";
+import maviLogo from "@/assets/mavi-logo.jpg";
 
 type View = "calendar" | "results";
 
@@ -117,11 +117,13 @@ export function CleanBoard() {
     <div className="min-h-screen bg-background">
       <div className="max-w-6xl mx-auto p-6">
         <div className="flex items-center gap-3 mb-8">
-          <div className="p-2.5 bg-primary/10 rounded-xl">
-            <Sparkles className="h-6 w-6 text-primary" />
-          </div>
+          <img 
+            src={maviLogo} 
+            alt="MAVI Guest" 
+            className="h-12 w-12 rounded-xl object-cover"
+          />
           <div>
-            <h1 className="text-2xl font-bold text-foreground">CleanBoard</h1>
+            <h1 className="text-2xl font-bold text-foreground">MAVI</h1>
             <p className="text-sm text-muted-foreground">Календарь уборок</p>
           </div>
         </div>
