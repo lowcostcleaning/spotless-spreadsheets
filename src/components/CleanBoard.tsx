@@ -39,22 +39,28 @@ export function CleanBoard() {
     const lastDate = new Date(year, month + 1, 0).getDate();
 
     const counts: Record<number, number> = {};
+    const dayOffs: Record<number, boolean> = {};
+    
     records.forEach((record) => {
       if (!record.date) return;
       const [d, mm, yy] = record.date.split(".").map(Number);
       if (yy === year && mm === month + 1) {
         counts[d] = (counts[d] || 0) + 1;
+        if (record.apartment?.toLowerCase().includes("выходной") || 
+            record.cleaner?.toLowerCase().includes("выходной")) {
+          dayOffs[d] = true;
+        }
       }
     });
 
     const days: DayData[] = [];
 
     for (let i = 0; i < startOffset; i++) {
-      days.push({ day: 0, count: 0, isCurrentMonth: false });
+      days.push({ day: 0, count: 0, isCurrentMonth: false, isDayOff: false });
     }
 
     for (let d = 1; d <= lastDate; d++) {
-      days.push({ day: d, count: counts[d] || 0, isCurrentMonth: true });
+      days.push({ day: d, count: counts[d] || 0, isCurrentMonth: true, isDayOff: dayOffs[d] || false });
     }
 
     return days;

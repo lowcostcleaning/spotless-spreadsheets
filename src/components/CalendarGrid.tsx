@@ -9,7 +9,8 @@ interface CalendarGridProps {
 const WEEKDAYS = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
 export function CalendarGrid({ days, onDayClick }: CalendarGridProps) {
-  const getLoadClass = (count: number) => {
+  const getLoadClass = (count: number, isDayOff: boolean) => {
+    if (isDayOff) return "border-l-4 border-l-muted-foreground bg-muted/50";
     if (count >= 5) return "border-l-4 border-l-destructive bg-destructive/5";
     if (count >= 3) return "border-l-4 border-l-warning bg-warning/5";
     if (count >= 1) return "border-l-4 border-l-success bg-success/5";
@@ -36,11 +37,11 @@ export function CalendarGrid({ days, onDayClick }: CalendarGridProps) {
             onClick={() => dayData.isCurrentMonth && dayData.count > 0 && onDayClick(dayData.day)}
             className={cn(
               "min-h-[100px] rounded-xl p-3 transition-all duration-200",
-              dayData.isCurrentMonth
+            dayData.isCurrentMonth
                 ? cn(
                     "bg-card shadow-sm border border-border",
                     dayData.count > 0 && "cursor-pointer hover:shadow-md hover:scale-[1.02]",
-                    getLoadClass(dayData.count)
+                    getLoadClass(dayData.count, dayData.isDayOff)
                   )
                 : "bg-transparent"
             )}
@@ -52,7 +53,7 @@ export function CalendarGrid({ days, onDayClick }: CalendarGridProps) {
                 </div>
                 {dayData.count > 0 && (
                   <span className="text-xs text-muted-foreground">
-                    {dayData.count} уборок
+                    {dayData.isDayOff ? "Выходной" : `${dayData.count} уборок`}
                   </span>
                 )}
               </>

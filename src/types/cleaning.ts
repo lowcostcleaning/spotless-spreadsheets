@@ -9,4 +9,5 @@ export interface DayData {
   day: number;
   count: number;
   isCurrentMonth: boolean;
+  isDayOff: boolean;
 }
