@@ -117,15 +117,21 @@ export function CleanBoard() {
     <div className="min-h-screen bg-background">
       <div className="max-w-6xl mx-auto p-4 sm:p-6">
         <div className="flex items-center gap-3 mb-6 sm:mb-8">
-          <img 
-            src={maviLogo} 
-            alt="MAVI Guest" 
-            className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl object-cover"
-          />
-          <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-foreground">MAVI</h1>
-            <p className="text-xs sm:text-sm text-muted-foreground">Календарь уборок</p>
-          </div>
+          <button 
+            onClick={handleToday}
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
+            title="Перейти к сегодня"
+          >
+            <img 
+              src={maviLogo} 
+              alt="MAVI Guest" 
+              className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl object-cover"
+            />
+            <div className="text-left">
+              <h1 className="text-xl sm:text-2xl font-bold text-foreground">MAVI</h1>
+              <p className="text-xs sm:text-sm text-muted-foreground">Календарь уборок</p>
+            </div>
+          </button>
         </div>
 
         {view === "calendar" ? (
