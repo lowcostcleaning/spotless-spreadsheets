@@ -19,24 +19,24 @@ export function CalendarGrid({ days, onDayClick }: CalendarGridProps) {
 
   return (
     <div className="animate-fade-in">
-      <div className="grid grid-cols-7 gap-2 mb-2">
+      <div className="grid grid-cols-7 gap-1 sm:gap-2 mb-1 sm:mb-2">
         {WEEKDAYS.map((day) => (
           <div
             key={day}
-            className="text-center text-sm font-medium text-muted-foreground py-2"
+            className="text-center text-xs sm:text-sm font-medium text-muted-foreground py-1 sm:py-2"
           >
             {day}
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-7 gap-1 sm:gap-2">
         {days.map((dayData, index) => (
           <div
             key={index}
             onClick={() => dayData.isCurrentMonth && dayData.count > 0 && onDayClick(dayData.day)}
             className={cn(
-              "min-h-[100px] rounded-xl p-3 transition-all duration-200",
+              "min-h-[48px] sm:min-h-[100px] rounded-lg sm:rounded-xl p-1.5 sm:p-3 transition-all duration-200",
             dayData.isCurrentMonth
                 ? cn(
                     "bg-card shadow-sm border border-border",
@@ -48,12 +48,12 @@ export function CalendarGrid({ days, onDayClick }: CalendarGridProps) {
           >
             {dayData.isCurrentMonth && (
               <>
-                <div className="font-semibold text-foreground mb-1">
+                <div className="font-semibold text-foreground text-xs sm:text-base mb-0.5 sm:mb-1">
                   {dayData.day}
                 </div>
                 {dayData.count > 0 && (
-                  <span className="text-xs text-muted-foreground">
-                    {dayData.isDayOff ? "Выходной" : `${dayData.count} уборок`}
+                  <span className="text-[10px] sm:text-xs text-muted-foreground leading-tight block">
+                    {dayData.isDayOff ? "Вых" : dayData.count}
                   </span>
                 )}
               </>

@@ -16,71 +16,74 @@ export function ResultsTable({ title, records, onBack }: ResultsTableProps) {
     <div className="animate-slide-up">
       <Button
         variant="ghost"
+        size="sm"
         onClick={onBack}
-        className="mb-4 gap-2 text-primary hover:text-primary/80 hover:bg-accent"
+        className="mb-3 sm:mb-4 gap-1 sm:gap-2 text-primary hover:text-primary/80 hover:bg-accent text-sm"
       >
         <ArrowLeft className="h-4 w-4" />
-        Назад к календарю
+        Назад
       </Button>
 
-      <h2 className="text-2xl font-semibold mb-4">{title}</h2>
+      <h2 className="text-lg sm:text-2xl font-semibold mb-3 sm:mb-4">{title}</h2>
 
       {records.length > 0 && (
-        <div className="bg-accent/50 rounded-xl p-4 mb-4 flex items-center gap-2">
-          <Banknote className="h-5 w-5 text-primary" />
-          <span className="font-semibold text-lg">Итого: {total.toLocaleString("ru-RU")} ₾</span>
+        <div className="bg-accent/50 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-3 sm:mb-4 flex items-center gap-2">
+          <Banknote className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+          <span className="font-semibold text-base sm:text-lg">Итого: {total.toLocaleString("ru-RU")} ₾</span>
         </div>
       )}
 
-      <div className="bg-card rounded-2xl shadow-sm border border-border overflow-hidden">
-        <Table>
-          <TableHeader>
-            <TableRow className="bg-secondary/50 hover:bg-secondary/50">
-              <TableHead className="font-semibold">
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-muted-foreground" />
-                  Дата
-                </div>
-              </TableHead>
-              <TableHead className="font-semibold">
-                <div className="flex items-center gap-2">
-                  <Building2 className="h-4 w-4 text-muted-foreground" />
-                  Апартамент
-                </div>
-              </TableHead>
-              <TableHead className="font-semibold">
-                <div className="flex items-center gap-2">
-                  <User className="h-4 w-4 text-muted-foreground" />
-                  Клинер
-                </div>
-              </TableHead>
-              <TableHead className="font-semibold">
-                <div className="flex items-center gap-2">
-                  <Banknote className="h-4 w-4 text-muted-foreground" />
-                  ЗП
-                </div>
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {records.length === 0 ? (
-              <TableRow>
-                <TableCell colSpan={4} className="text-center py-8 text-muted-foreground">
-                  Нет данных
-                </TableCell>
+      <div className="bg-card rounded-xl sm:rounded-2xl shadow-sm border border-border overflow-hidden">
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow className="bg-secondary/50 hover:bg-secondary/50">
+                <TableHead className="font-semibold text-xs sm:text-sm whitespace-nowrap">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Calendar className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
+                    <span className="hidden sm:inline">Дата</span>
+                  </div>
+                </TableHead>
+                <TableHead className="font-semibold text-xs sm:text-sm">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Building2 className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
+                    <span className="hidden sm:inline">Апартамент</span>
+                  </div>
+                </TableHead>
+                <TableHead className="font-semibold text-xs sm:text-sm">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <User className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
+                    <span className="hidden sm:inline">Клинер</span>
+                  </div>
+                </TableHead>
+                <TableHead className="font-semibold text-xs sm:text-sm whitespace-nowrap">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Banknote className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
+                    <span className="hidden sm:inline">ЗП</span>
+                  </div>
+                </TableHead>
               </TableRow>
-            ) : (
-              records.map((record, index) => (
-                <TableRow key={index} className="hover:bg-secondary/30 transition-colors">
-                  <TableCell className="font-medium">{record.date}</TableCell>
-                  <TableCell>{record.apartment}</TableCell>
-                  <TableCell>{record.cleaner}</TableCell>
-                  <TableCell>{record.salary.toLocaleString("ru-RU")} ₾</TableCell>
+            </TableHeader>
+            <TableBody>
+              {records.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={4} className="text-center py-6 sm:py-8 text-muted-foreground text-sm">
+                    Нет данных
+                  </TableCell>
                 </TableRow>
-              ))
-            )}
-          </TableBody>
-        </Table>
+              ) : (
+                records.map((record, index) => (
+                  <TableRow key={index} className="hover:bg-secondary/30 transition-colors">
+                    <TableCell className="font-medium text-xs sm:text-sm py-2 sm:py-4">{record.date}</TableCell>
+                    <TableCell className="text-xs sm:text-sm py-2 sm:py-4 max-w-[100px] sm:max-w-none truncate">{record.apartment}</TableCell>
+                    <TableCell className="text-xs sm:text-sm py-2 sm:py-4">{record.cleaner}</TableCell>
+                    <TableCell className="text-xs sm:text-sm py-2 sm:py-4 whitespace-nowrap">{record.salary.toLocaleString("ru-RU")} ₾</TableCell>
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </div>
   );
