@@ -115,16 +115,16 @@ export function CleanBoard() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-6xl mx-auto p-6">
-        <div className="flex items-center gap-3 mb-8">
+      <div className="max-w-6xl mx-auto p-4 sm:p-6">
+        <div className="flex items-center gap-3 mb-6 sm:mb-8">
           <img 
             src={maviLogo} 
             alt="MAVI Guest" 
-            className="h-12 w-12 rounded-xl object-cover"
+            className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl object-cover"
           />
           <div>
-            <h1 className="text-2xl font-bold text-foreground">MAVI</h1>
-            <p className="text-sm text-muted-foreground">Календарь уборок</p>
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground">MAVI</h1>
+            <p className="text-xs sm:text-sm text-muted-foreground">Календарь уборок</p>
           </div>
         </div>
 
@@ -150,18 +150,18 @@ export function CleanBoard() {
 
             <CalendarGrid days={calendarDays} onDayClick={handleDayClick} />
 
-            <div className="flex gap-6 mt-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap gap-3 sm:gap-6 mt-4 sm:mt-6 text-xs sm:text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded border-l-4 border-l-success bg-success/20" />
-                <span>1-2 уборки</span>
+                <div className="w-3 h-3 sm:w-4 sm:h-4 rounded border-l-4 border-l-success bg-success/20" />
+                <span>1-2</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded border-l-4 border-l-warning bg-warning/20" />
-                <span>3-4 уборки</span>
+                <div className="w-3 h-3 sm:w-4 sm:h-4 rounded border-l-4 border-l-warning bg-warning/20" />
+                <span>3-4</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded border-l-4 border-l-destructive bg-destructive/20" />
-                <span>5+ уборок</span>
+                <div className="w-3 h-3 sm:w-4 sm:h-4 rounded border-l-4 border-l-destructive bg-destructive/20" />
+                <span>5+</span>
               </div>
             </div>
           </>

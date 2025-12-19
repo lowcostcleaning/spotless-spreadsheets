@@ -15,14 +15,14 @@ export function CalendarHeader({ currentDate, onPrevMonth, onNextMonth, onToday 
   });
 
   return (
-    <div className="flex items-center justify-between mb-6">
-      <div className="flex items-center gap-3">
-        <div className="flex items-center gap-1 bg-card rounded-xl p-1 shadow-sm border border-border">
+    <div className="flex items-center justify-between mb-4 sm:mb-6">
+      <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-0.5 sm:gap-1 bg-card rounded-lg sm:rounded-xl p-0.5 sm:p-1 shadow-sm border border-border">
           <Button
             variant="ghost"
             size="icon"
             onClick={onPrevMonth}
-            className="h-9 w-9 rounded-lg hover:bg-secondary"
+            className="h-8 w-8 sm:h-9 sm:w-9 rounded-md sm:rounded-lg hover:bg-secondary"
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
@@ -30,21 +30,23 @@ export function CalendarHeader({ currentDate, onPrevMonth, onNextMonth, onToday 
             variant="ghost"
             size="icon"
             onClick={onNextMonth}
-            className="h-9 w-9 rounded-lg hover:bg-secondary"
+            className="h-8 w-8 sm:h-9 sm:w-9 rounded-md sm:rounded-lg hover:bg-secondary"
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
-        <h1 className="text-2xl font-semibold capitalize">{monthYear}</h1>
+        <h1 className="text-base sm:text-2xl font-semibold capitalize">{monthYear}</h1>
       </div>
       
       <Button
         variant="outline"
+        size="sm"
         onClick={onToday}
-        className="gap-2 rounded-xl border-border hover:bg-accent hover:text-accent-foreground"
+        className="gap-1 sm:gap-2 rounded-lg sm:rounded-xl border-border hover:bg-accent hover:text-accent-foreground text-xs sm:text-sm px-2 sm:px-4"
       >
-        <CalendarDays className="h-4 w-4" />
-        Сегодня
+        <CalendarDays className="h-3 w-3 sm:h-4 sm:w-4" />
+        <span className="hidden sm:inline">Сегодня</span>
+        <span className="sm:hidden">Сег.</span>
       </Button>
     </div>
   );
