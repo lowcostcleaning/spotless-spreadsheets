@@ -1,6 +1,6 @@
 import { CleaningRecord } from "@/types/cleaning";
 
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRe6bsx2rDJvoxxzC8Wl82GHIatzxQJcGsiMWFDWpSStIDMX3JzKbLIULoU_isuM3jMuwwfgazIi86l/pub?gid=0&single=true&output=csv";
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSYLtvZxyunyQ3VIZ0skrmnbWxnzdUxllbUNnouJ7PSYXLuTpZmKRoHGNySJFage7zKhLDu4L9nuKrD/pub?gid=0&single=true&output=csv";
 
 export async function fetchCleaningData(): Promise<CleaningRecord[]> {
   const response = await fetch(CSV_URL);
@@ -24,6 +24,7 @@ function parseCSV(text: string): CleaningRecord[] {
       apartment: record["апартамент"] || "",
       cleaner: record["клинер"] || "",
       salary: parseFloat(record["зп"]) || 0,
+      urgency: record["срочность"] || "",
     };
   });
 }

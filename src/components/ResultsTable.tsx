@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { CleaningRecord } from "@/types/cleaning";
-import { ArrowLeft, Calendar, Building2, User, Banknote } from "lucide-react";
+import { ArrowLeft, Calendar, Building2, User, Banknote, AlertCircle } from "lucide-react";
 
 interface ResultsTableProps {
   title: string;
@@ -62,12 +62,18 @@ export function ResultsTable({ title, records, onBack }: ResultsTableProps) {
                     <span className="hidden sm:inline">ЗП</span>
                   </div>
                 </TableHead>
+                <TableHead className="font-semibold text-xs sm:text-sm">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <AlertCircle className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
+                    <span className="hidden sm:inline">Срочность</span>
+                  </div>
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {records.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={4} className="text-center py-6 sm:py-8 text-muted-foreground text-sm">
+                  <TableCell colSpan={5} className="text-center py-6 sm:py-8 text-muted-foreground text-sm">
                     Нет данных
                   </TableCell>
                 </TableRow>
@@ -78,6 +84,7 @@ export function ResultsTable({ title, records, onBack }: ResultsTableProps) {
                     <TableCell className="text-xs sm:text-sm py-2 sm:py-4 max-w-[100px] sm:max-w-none truncate">{record.apartment}</TableCell>
                     <TableCell className="text-xs sm:text-sm py-2 sm:py-4">{record.cleaner}</TableCell>
                     <TableCell className="text-xs sm:text-sm py-2 sm:py-4 whitespace-nowrap">{record.salary.toLocaleString("ru-RU")} ₾</TableCell>
+                    <TableCell className="text-xs sm:text-sm py-2 sm:py-4">{record.urgency}</TableCell>
                   </TableRow>
                 ))
               )}
