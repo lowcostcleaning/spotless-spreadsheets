@@ -75,7 +75,14 @@ export function CleanBoard() {
   };
 
   const handleToday = () => {
-    setCurrentDate(new Date());
+    const today = new Date();
+    setCurrentDate(today);
+    // Open today's cleanings
+    const date = formatDate(today.getDate(), today.getMonth(), today.getFullYear());
+    const dayRecords = records.filter((r) => r.date === date);
+    setFilteredRecords(dayRecords);
+    setResultsTitle(`Уборки за ${date}`);
+    setView("results");
   };
 
   const handleDayClick = (day: number) => {
