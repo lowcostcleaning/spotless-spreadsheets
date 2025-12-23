@@ -83,7 +83,14 @@ export function ResultsTable({ title, records, onBack }: ResultsTableProps) {
                     <TableCell className="font-medium text-xs sm:text-sm py-2 sm:py-4">{record.date}</TableCell>
                     <TableCell className="text-xs sm:text-sm py-2 sm:py-4 max-w-[100px] sm:max-w-none truncate">{record.apartment}</TableCell>
                     <TableCell className="text-xs sm:text-sm py-2 sm:py-4">{record.cleaner}</TableCell>
-                    <TableCell className="text-xs sm:text-sm py-2 sm:py-4">{record.urgency}</TableCell>
+                    <TableCell className="text-xs sm:text-sm py-2 sm:py-4">
+                      {record.urgency && (
+                        <div className="flex items-center gap-1 text-red-500 font-medium">
+                          <AlertCircle className="h-4 w-4" />
+                          <span>{record.urgency}</span>
+                        </div>
+                      )}
+                    </TableCell>
                     <TableCell className="text-xs sm:text-sm py-2 sm:py-4 whitespace-nowrap">{record.salary.toLocaleString("ru-RU")} ₾</TableCell>
                   </TableRow>
                 ))
