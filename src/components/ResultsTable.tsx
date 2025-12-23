@@ -56,16 +56,16 @@ export function ResultsTable({ title, records, onBack }: ResultsTableProps) {
                     <span className="hidden sm:inline">Клинер</span>
                   </div>
                 </TableHead>
-                <TableHead className="font-semibold text-xs sm:text-sm whitespace-nowrap">
-                  <div className="flex items-center gap-1 sm:gap-2">
-                    <Banknote className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
-                    <span className="hidden sm:inline">ЗП</span>
-                  </div>
-                </TableHead>
                 <TableHead className="font-semibold text-xs sm:text-sm">
                   <div className="flex items-center gap-1 sm:gap-2">
                     <AlertCircle className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
                     <span className="hidden sm:inline">Срочность</span>
+                  </div>
+                </TableHead>
+                <TableHead className="font-semibold text-xs sm:text-sm whitespace-nowrap">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Banknote className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
+                    <span className="hidden sm:inline">ЗП</span>
                   </div>
                 </TableHead>
               </TableRow>
@@ -83,8 +83,8 @@ export function ResultsTable({ title, records, onBack }: ResultsTableProps) {
                     <TableCell className="font-medium text-xs sm:text-sm py-2 sm:py-4">{record.date}</TableCell>
                     <TableCell className="text-xs sm:text-sm py-2 sm:py-4 max-w-[100px] sm:max-w-none truncate">{record.apartment}</TableCell>
                     <TableCell className="text-xs sm:text-sm py-2 sm:py-4">{record.cleaner}</TableCell>
-                    <TableCell className="text-xs sm:text-sm py-2 sm:py-4 whitespace-nowrap">{record.salary.toLocaleString("ru-RU")} ₾</TableCell>
                     <TableCell className="text-xs sm:text-sm py-2 sm:py-4">{record.urgency}</TableCell>
+                    <TableCell className="text-xs sm:text-sm py-2 sm:py-4 whitespace-nowrap">{record.salary.toLocaleString("ru-RU")} ₾</TableCell>
                   </TableRow>
                 ))
               )}

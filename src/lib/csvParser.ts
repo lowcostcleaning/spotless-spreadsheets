@@ -12,21 +12,28 @@ function parseCSV(text: string): CleaningRecord[] {
   const lines = text.trim().split(/\r?\n/);
   const headers = lines.shift()?.split(",") || [];
   
-  return lines.map(line => {
-    const values = line.split(",");
-    const record: Record<string, string> = {};
-    headers.forEach((header, index) => {
-      record[header.trim()] = values[index]?.trim() || "";
+  return lines
+    .map(line => {
+      const values = line.split(",");
+      const record: Record<string, string> = {};
+      headers.forEach((header, index) => {
+        record[header.trim()] = values[index]?.trim() || "";
+      });
+      
+      return {
+        date: record["дата"] || "",
+        apartment: record["апартамент"] || "",
+        cleaner: record["клинер"] || "",
+        salary: parseFloat(record["зп"]) || 0,
+        urgency: record["срочность"] || "",
+      };
+    })
+    .filter(record => {
+      // Filter out invalid rows: week markers, empty rows, and rows without apartment
+      const isValidDate = /^\d{2}\.\d{2}\.\d{4}$/.test(record.date);
+      const hasApartment = record.apartment.trim() !== "";
+      return isValidDate && hasApartment;
     });
-    
-    return {
-      date: record["дата"] || "",
-      apartment: record["апартамент"] || "",
-      cleaner: record["клинер"] || "",
-      salary: parseFloat(record["зп"]) || 0,
-      urgency: record["срочность"] || "",
-    };
-  });
 }
 
 export function toISO(dateStr: string): string {
