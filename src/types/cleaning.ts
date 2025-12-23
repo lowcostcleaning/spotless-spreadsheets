@@ -3,6 +3,7 @@ export interface CleaningRecord {
   apartment: string;
   cleaner: string;
   salary: number;
+  urgency: string;
 }
 
 export interface DayData {
