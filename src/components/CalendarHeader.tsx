@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, CalendarDays } from "lucide-react";
+import { format } from "date-fns";
+import { ru } from "date-fns/locale";
 
 interface CalendarHeaderProps {
   currentDate: Date;
@@ -13,6 +15,8 @@ export function CalendarHeader({ currentDate, onPrevMonth, onNextMonth, onToday 
     month: "long",
     year: "numeric",
   });
+
+  const todayDate = format(new Date(), 'dd.MM', { locale: ru });
 
   return (
     <div className="flex items-center justify-between mb-4 sm:mb-6">
@@ -45,8 +49,8 @@ export function CalendarHeader({ currentDate, onPrevMonth, onNextMonth, onToday 
         className="gap-1 sm:gap-2 rounded-lg sm:rounded-xl border-border hover:bg-accent hover:text-accent-foreground text-xs sm:text-sm px-2 sm:px-4"
       >
         <CalendarDays className="h-3 w-3 sm:h-4 sm:w-4" />
-        <span className="hidden sm:inline">Сегодня</span>
-        <span className="sm:hidden">Сег.</span>
+        <span className="hidden sm:inline">Сегодня, {todayDate}</span>
+        <span className="sm:hidden">Сег. {todayDate}</span>
       </Button>
     </div>
   );
