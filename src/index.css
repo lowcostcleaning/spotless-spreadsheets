@@ -101,10 +101,17 @@
   }
 
   body {
-    @apply text-foreground font-sans antialiased bg-background; /* Changed to use bg-background instead of gradient */
+    @apply text-foreground font-sans antialiased;
     font-family: 'Outfit', system-ui, sans-serif;
     background-attachment: fixed;
     min-height: 100vh;
+    /* Sea Gradient Background */
+    background: linear-gradient(to bottom right, hsl(210 50% 95%), hsl(200 70% 85%));
+  }
+
+  .dark body {
+    /* Dark Sea Gradient Background */
+    background: linear-gradient(to bottom right, hsl(220 20% 10%), hsl(210 30% 20%));
   }
 }
 
