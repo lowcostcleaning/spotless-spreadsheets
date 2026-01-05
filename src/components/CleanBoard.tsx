@@ -7,6 +7,8 @@ import { CalendarFilters } from "./CalendarFilters";
 import { CalendarGrid } from "./CalendarGrid";
 import { ResultsTable } from "./ResultsTable";
 import { LoadingSpinner } from "./LoadingSpinner";
+import { Button } from "@/components/ui/button";
+import { useBestCleaner } from "@/hooks/useBestCleaner";
 import maviLogo from "@/assets/mavi-logo.jpg";
 
 type View = "calendar" | "results";
@@ -24,6 +26,8 @@ export function CleanBoard() {
     queryKey: ["cleaningData"],
     queryFn: fetchCleaningData,
   });
+
+  const { showBestCleaner } = useBestCleaner(records);
 
   const cleaners = useMemo(() => {
     const unique = [...new Set(records.map((r) => r.cleaner).filter(Boolean))];
@@ -155,6 +159,16 @@ export function CleanBoard() {
               onNextMonth={handleNextMonth}
               onToday={handleToday}
             />
+            
+            <div className="flex justify-end mb-4 sm:mb-6">
+              <Button
+                onClick={showBestCleaner}
+                variant="secondary"
+                className="rounded-lg sm:rounded-xl text-xs sm:text-sm px-3 sm:px-4 h-8 sm:h-9 border border-border hover:bg-secondary/80"
+              >
+                Лучший клинер недели
+              </Button>
+            </div>
 
             <CalendarFilters
               cleaners={cleaners}

@@ -44,3 +44,13 @@ export function toISO(dateStr: string): string {
 export function formatDate(day: number, month: number, year: number): string {
   return `${String(day).padStart(2, "0")}.${String(month + 1).padStart(2, "0")}.${year}`;
 }
+
+export function parseDate(dateStr: string): Date | null {
+  const parts = dateStr.split(".");
+  if (parts.length === 3) {
+    const [dd, mm, yy] = parts.map(Number);
+    // Month is 0-indexed in Date constructor
+    return new Date(yy, mm - 1, dd);
+  }
+  return null;
+}
