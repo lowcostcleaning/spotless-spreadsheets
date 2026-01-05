@@ -76,7 +76,7 @@ export function useBestCleaner(records: CleaningRecord[]) {
     toast.success(
       `🏆 Лучший клинер недели (${result.startDate} - ${result.endDate})`,
       {
-        description: `${result.bestCleaner} выполнил(а) ${result.maxCleanings} уборок!`,
+        description: `${result.bestCleaner} - выполнено ${result.maxCleanings} уборок!`,
         duration: 7000,
       }
     );
