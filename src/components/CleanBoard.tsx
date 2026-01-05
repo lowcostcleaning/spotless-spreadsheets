@@ -141,7 +141,7 @@ export function CleanBoard() {
                 MAVI
               </h1>
               <p className="text-xs sm:text-sm text-muted-foreground">
-                Календарь уборок ✨
+                Календарь уборок
               </p>
             </div>
           </button>

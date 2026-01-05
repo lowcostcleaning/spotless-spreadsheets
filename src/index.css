@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    --background: 210 60% 96%;
-    --foreground: 210 30% 15%;
+    --background: 0 0% 100%; /* White */
+    --foreground: 210 30% 15%; /* Dark text */
 
     --card: 0 0% 100%;
     --card-foreground: 210 30% 15%;
@@ -15,17 +15,17 @@
     --popover: 0 0% 100%;
     --popover-foreground: 210 30% 15%;
 
-    --primary: 350 70% 50%;
+    --primary: 210 90% 50%; /* Apple Blue */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 92%;
+    --secondary: 210 20% 95%; /* Light Gray/Blue */
     --secondary-foreground: 210 30% 25%;
 
-    --muted: 210 30% 94%;
+    --muted: 210 20% 90%; /* Muted Gray */
     --muted-foreground: 210 20% 45%;
 
-    --accent: 160 50% 90%;
-    --accent-foreground: 160 60% 30%;
+    --accent: 210 20% 95%;
+    --accent-foreground: 210 30% 15%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
@@ -36,67 +36,62 @@
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
 
-    --border: 210 30% 88%;
-    --input: 210 30% 88%;
-    --ring: 350 70% 50%;
+    --border: 210 10% 85%;
+    --input: 210 10% 85%;
+    --ring: 210 90% 50%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Winter gradient colors */
-    --winter-start: 210 70% 94%;
-    --winter-mid: 200 60% 90%;
-    --winter-end: 220 50% 96%;
-
+    /* Sidebar colors kept neutral */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-primary: 210 90% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 95%;
     --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-border: 210 10% 85%;
+    --sidebar-ring: 210 90% 50%;
   }
 
   .dark {
-    --background: 200 30% 8%;
-    --foreground: 195 20% 95%;
+    --background: 220 20% 10%; /* Dark Gray */
+    --foreground: 210 20% 90%;
 
-    --card: 200 25% 12%;
-    --card-foreground: 195 20% 95%;
+    --card: 220 20% 15%;
+    --card-foreground: 210 20% 90%;
 
-    --popover: 200 25% 12%;
-    --popover-foreground: 195 20% 95%;
+    --popover: 220 20% 15%;
+    --popover-foreground: 210 20% 90%;
 
-    --primary: 175 60% 50%;
-    --primary-foreground: 200 30% 8%;
+    --primary: 210 90% 60%; /* Brighter Apple Blue */
+    --primary-foreground: 220 20% 10%;
 
-    --secondary: 200 20% 18%;
-    --secondary-foreground: 195 20% 90%;
+    --secondary: 220 20% 20%;
+    --secondary-foreground: 210 20% 80%;
 
-    --muted: 200 20% 15%;
-    --muted-foreground: 195 15% 60%;
+    --muted: 220 20% 25%;
+    --muted-foreground: 210 15% 60%;
 
-    --accent: 175 40% 20%;
-    --accent-foreground: 175 60% 70%;
+    --accent: 220 20% 20%;
+    --accent-foreground: 210 20% 90%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
-
     --success: 145 50% 35%;
     --warning: 38 80% 45%;
 
-    --border: 200 20% 20%;
-    --input: 200 20% 20%;
-    --ring: 175 60% 50%;
+    --border: 220 20% 25%;
+    --input: 220 20% 25%;
+    --ring: 210 90% 60%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar colors kept neutral */
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 210 90% 60%;
+    --sidebar-primary-foreground: 220 20% 10%;
+    --sidebar-accent: 220 20% 20%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 220 20% 25%;
+    --sidebar-ring: 210 90% 60%;
   }
 }
 
@@ -106,14 +101,8 @@
   }
 
   body {
-    @apply text-foreground font-sans antialiased;
+    @apply text-foreground font-sans antialiased bg-background; /* Changed to use bg-background instead of gradient */
     font-family: 'Outfit', system-ui, sans-serif;
-    background: linear-gradient(
-      180deg,
-      hsl(var(--winter-start)) 0%,
-      hsl(var(--winter-mid)) 50%,
-      hsl(var(--winter-end)) 100%
-    );
     background-attachment: fixed;
     min-height: 100vh;
   }
@@ -128,13 +117,7 @@
     animation: slideUp 0.4s ease-out forwards;
   }
 
-  .animate-snowfall {
-    animation: snowfall linear infinite;
-  }
-
-  .animate-twinkle {
-    animation: twinkle 2s ease-in-out infinite;
-  }
+  /* Removed snowfall and twinkle animations as they were likely related to the winter theme */
 }
 
 @keyframes fadeIn {
@@ -154,23 +137,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes snowfall {
-  0% {
-    transform: translateY(-10px) rotate(0deg);
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-  }
-}
-
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
   }
 }
