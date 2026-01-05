@@ -7,7 +7,6 @@ import { CalendarFilters } from "./CalendarFilters";
 import { CalendarGrid } from "./CalendarGrid";
 import { ResultsTable } from "./ResultsTable";
 import { LoadingSpinner } from "./LoadingSpinner";
-import { Snowflakes } from "./Snowflakes";
 import maviLogo from "@/assets/mavi-logo.jpg";
 
 type View = "calendar" | "results";
@@ -123,21 +122,6 @@ export function CleanBoard() {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      <Snowflakes />
-      
-      {/* Новогодние гирлянды */}
-      <div className="absolute top-0 left-0 right-0 h-8 flex justify-around items-start z-40 pointer-events-none">
-        {[...Array(12)].map((_, i) => (
-          <div
-            key={i}
-            className="text-lg sm:text-2xl animate-twinkle"
-            style={{ animationDelay: `${i * 0.2}s` }}
-          >
-            {i % 3 === 0 ? "🎄" : i % 3 === 1 ? "⭐" : "🎅"}
-          </div>
-        ))}
-      </div>
-
       <div className="max-w-6xl mx-auto p-4 sm:p-6 pt-10 sm:pt-12">
         <div className="flex items-center gap-3 mb-6 sm:mb-8">
           <button 
@@ -151,11 +135,10 @@ export function CleanBoard() {
                 alt="MAVI Guest" 
                 className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl object-cover"
               />
-              <span className="absolute -top-1 -right-1 text-sm">🎄</span>
             </div>
             <div className="text-left">
               <h1 className="text-xl sm:text-2xl font-bold text-foreground">
-                MAVI <span className="text-destructive">🎅</span>
+                MAVI
               </h1>
               <p className="text-xs sm:text-sm text-muted-foreground">
                 Календарь уборок ✨
